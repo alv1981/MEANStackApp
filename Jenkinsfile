@@ -5,7 +5,7 @@ node('maven') {
   stage('SonarQube Analysis') {
         def scannerLoc = tool 'sonar-scanner1'
         withSonarQubeEnv(credentialsId:'sonar_token',installationName:'sonarqube-server') {
-        sh "${scannerLoc}/bin/sonar-scanner  -Dsonar.projectName=maven -Dsonar.projectVersion=1.0 -Dsonar.projectKey=maven "
+        sh "${scannerLoc}/bin/sonar-scanner  -Dsonar.host.url=http://10.168.0.11:9000 -Dsonar.projectName=maven -Dsonar.projectVersion=1.0 -Dsonar.projectKey=maven "
     }
   }
 }
